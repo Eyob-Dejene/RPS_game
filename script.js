@@ -1,36 +1,44 @@
-let shootNum; 
 let humanScore =0;
 let computerScore =0;
-function getComputerChoice(shootNum){
-    shootNum = Math.floor(Math.random() * 3);
-    console.log(shootNum);
-    if (shootNum == 0){
-        console.log("Rock");
-    } else if (shootNum == 1){
-        console.log("Paper")
-    } else {
-        console.log("Scissors");
+let compChoice;
+function getComputerChoice(compChoice){
+    compChoice = Math.floor(Math.random() * 3);
+    console.log(compChoice);
+    if (compChoice == 0){
+        compChoice ="ROCK";
+        console.log("COMPUTER CHOOSE " + compChoice);
+    } else if (compChoice == 1){
+        compChoice = "PAPER";
+        console.log("COMPUTER CHOOSE " + compChoice);
+
+    } else if (compChoice == 2){
+        compChoice = "SISSORS";
+        console.log("COMPUTER CHOOSE " + compChoice);
+
     }
 
 }
-console.log(getComputerChoice());
-let humanplay;
+//console.log(getComputerChoice());
+let humChoice;
 function getHumanChoice (){
-     humanplay= prompt("Choose 0->Rock | 1->Paper | 2->Sissors");
-    if(humanplay >=3){
-        alert("Please Choose 0, 1 or 2 ONLY!")
+    humChoice= prompt("Choose   | Rock | Paper | Sissors | ");
+    if(((humChoice.toUpperCase() != "ROCK") && (humChoice.toUpperCase() != "PAPER")) && (humChoice.toUpperCase() != "SISSORS"))
+    {
+        alert("Invalid Value Entered!")
     } else {
-        console.log(humanplay);
-    }
-    
-if (humanplay == 0){
-        console.log("You Choose " + humanplay);
-    } else if (humanplay == 1){
-        console.log("You Choose " + humanplay);
-    } else if(humanplay == 2) {
-        console.log("You Choose " + humanplay);
-    } else {
-        console.log("You Choose Wrong Number! " + humanplay);
+        humChoice = humChoice.toUpperCase();
+        console.log("Human Choose " + humChoice);
     }
 }
-getHumanChoice();
+humChoice = getHumanChoice() 
+compChoice= getComputerChoice();
+function playRound (humChoice,compChoice){
+
+    if (humChoice === compChoice){
+        console.log("Play Again!")
+    } else {
+        console.log("There is a winner");
+    }
+}
+//playRound(getHumanChoice(),getComputerChoice());
+playRound();
