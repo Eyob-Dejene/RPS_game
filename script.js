@@ -9,7 +9,6 @@ let humanHighscore =0;
 let compHighScore =0;
 function getComputerChoice(compChoice){
     compChoice = Math.floor(Math.random() * 3);
-    //console.log(compChoice);
     if (compChoice == 0){
         compChoice ="ROCK";  
         console.log("COMPUTER CHOOSE " + compChoice);
@@ -46,25 +45,25 @@ function playRound (humChoice,compChoice ){
         computerScore=0;
     } else if ((humChoice === "ROCK") && (compChoice === "PAPER")){
         console.log("You Lost! "+ compChoice + " beats " + humChoice)
-        computerScore++;
+        computerScore+=1;
     } else if ((humChoice === "ROCK") && (compChoice === "SISSORS")) {
         console.log("You Won! "+ humChoice + " beats " + compChoice)
-        humanScore ++
+        humanScore +=1
     } else if ((humChoice === "PAPER") && (compChoice === "ROCK" )){
         console.log("You Won! "+ humChoice + " beats " + compChoice)
-        humanScore++;
+        humanScore+=1
     } else if ((humChoice === "PAPER") && (compChoice === "SISSORS")){
         console.log("You Lost! "+ compChoice + " beats " + humChoice)
-        computerScore++;
+        computerScore+=1
     } else if ((humChoice === "SISSORS") && (compChoice === "ROCK")){
         console.log("You Lost! "+ compChoice + " beats " + humChoice)
-        computerScore++;
+        computerScore+=1
     } else if ((humChoice === "SISSORS") && (compChoice === "PAPER")){
         console.log("You Won! "+ humChoice + " beats " + compChoice)
-        humanScore++;
+        humanScore+=1
 
     } else {
-        console.log("Unknown Result")
+        console.log("Invalid Choice!")
 
     }
     if (humanScore === computerScore){
@@ -85,26 +84,33 @@ function playGame(rounds){
   
     winnerPlayer=playRound(getHumanChoice(),getComputerChoice());
 if (winnerPlayer === "Human Won"){
- humanHighscore ++;
+ humanHighscore +=1
 } else if (winnerPlayer === "Computer Won"){
-    compHighScore ++;
+    compHighScore +=1
 } else if (winnerPlayer === 0){
     console.log("Tie! No Points for both")
 } else {
-    console.log("Something is Wrong!")
+    console.log("Something Must be Wrong!")
 }
 
 }
-playGame();
-playGame();
-playGame();
+
 playRounds();
 function playRounds(){
+
+playGame();
+playGame();
+playGame();
 if (humanHighscore > compHighScore){
     console.log("You WON The Game !!")
+    console.log("Full Score: " + humanHighscore,compHighScore);
+
 } else if (compHighScore > humanHighscore){
     console.log("Computer WON The Game !!")
+    console.log("Full Score: "+ compHighScore,humanHighscore);
+
 } else if (compHighScore === humanHighscore){
+    console.log("Full Score: "+ compHighScore,humanHighscore);
     alert("It's a TIE! Play Again :-) ");
 }
 
